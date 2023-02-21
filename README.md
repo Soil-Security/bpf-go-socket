@@ -21,6 +21,8 @@ make -C src all
 
 Run the application:
 
-```
-sudo ./src/bpf-raw-socket-filter --index=0
+``` console
+$ sudo ./src/socket-filter --index=0
+Filtering on eth index: 0
+        ICMP: 20 TCP: 121 UDP: 12_
 ```
