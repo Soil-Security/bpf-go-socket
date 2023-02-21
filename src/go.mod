@@ -1,4 +1,4 @@
-module github.com/danielpacak/bpf-go-template
+module github.com/danielpacak/bpf-raw-socket-filter
 
 go 1.19
 

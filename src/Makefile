@@ -25,11 +25,11 @@ CFLAGS := -g -Wall
 ALL_LDFLAGS := $(LDFLAGS) $(EXTRA_LDFLAGS)
 
 .PHONY: all
-all: bootstrap
+all: socket-filter
 
 .PHONY: clean
 clean:
-	$(Q)rm -rf $(OUTPUT) bootstrap.bpf.o bootstrap
+	$(Q)rm -rf $(OUTPUT) socket-filter.bpf.o socket-filter
 
 $(OUTPUT) $(OUTPUT)/libbpf $(BPFTOOL_OUTPUT):
 	$(Q)mkdir -p $@
@@ -46,13 +46,13 @@ $(BPFTOOL): | $(BPFTOOL_OUTPUT)
 	$(Q)$(MAKE) ARCH= CROSS_COMPILE= OUTPUT=$(BPFTOOL_OUTPUT)/ -C $(BPFTOOL_SRC) bootstrap
 
 # Build BPF code
-bootstrap.bpf.o: bootstrap.bpf.c $(LIBBPF_OBJ) | $(OUTPUT)
-	$(Q)$(CLANG) -g -O2 -target bpf -D__TARGET_ARCH_$(ARCH) $(INCLUDES) $(CLANG_BPF_SYS_INCLUDES) -c bootstrap.bpf.c -o $@
+socket-filter.bpf.o: socket-filter.bpf.c $(LIBBPF_OBJ) | $(OUTPUT)
+	$(Q)$(CLANG) -g -O2 -target bpf -D__TARGET_ARCH_$(ARCH) $(INCLUDES) $(CLANG_BPF_SYS_INCLUDES) -c socket-filter.bpf.c -o $@
 	$(Q)$(LLVM_STRIP) -g $@
 
 # Build application binary
-bootstrap: bootstrap.bpf.o bootstrap.go
-	$(Q)$(GO) build -o $@ bootstrap.go
+socket-filter: socket-filter.bpf.o main.go
+	$(Q)$(GO) build -o $@ main.go
 
 .PHONY: $(VMLINUX)
 $(VMLINUX): $(BPFTOOL)
@@ -61,8 +61,8 @@ $(VMLINUX): $(BPFTOOL)
 .PHONY: format
 format:
 	$(Q)$(CLANG_FORMAT) --verbose -i \
-	bootstrap.bpf.c \
-	bootstrap.h
+	socket-filter.bpf.c \
+	socket-filter.h
 
 # delete failed targets
 .DELETE_ON_ERROR:

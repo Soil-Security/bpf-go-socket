@@ -26,4 +26,4 @@ jobs:
 
     - name: Run App
       run: |
-        sudo timeout --preserve-status 5s ./src/bootstrap
+        sudo timeout --preserve-status 5s ./src/socket-filter
