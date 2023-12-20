@@ -66,7 +66,8 @@ func run(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
-	fmt.Printf("Filtering on eth index: %d\n", *index)
+
+	fmt.Printf("Filtering as uid=%d(%s) on eth index: %d\n", os.Getuid(), os.Getenv("USER"), *index)
 
 	go func() {
 		for {

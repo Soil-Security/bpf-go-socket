@@ -34,5 +34,6 @@ int socket_prog(struct __sk_buff *skb) {
     value = &one;
   }
   bpf_map_update_elem(&countmap, &key, value, BPF_ANY);
+
   return 0;
 }
