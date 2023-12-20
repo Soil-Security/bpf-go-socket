@@ -1,4 +1,4 @@
-# bpf-raw-socket-filter
+# bpf-go-socket-filter
 
 The `socket-filter` program demonstrates how to load an eBPF program from an ELF file,
 and attach it to a raw socket.
@@ -8,8 +8,12 @@ and attach it to a raw socket.
 Clone and change current directory to the cloned repository:
 
 ```
-git clone https://github.com/danielpacak/bpf-raw-socket-filter.git
-cd bpf-raw-socket-filter
+git clone --recurse-submodules https://github.com/danielpacak/bpf-go-socket-filter.git
+```
+or
+```
+git clone https://github.com/danielpacak/bpf-go-socket-filter.git
+cd bpf-go-socket-filter
 git submodule update --init --recursive
 ```
 
