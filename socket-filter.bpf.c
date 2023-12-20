@@ -1,10 +1,10 @@
 //+build ignore
 
+#include "socket-filter.h"
 #include "vmlinux.h"
 #include <bpf/bpf_core_read.h>
 #include <bpf/bpf_helpers.h>
 #include <bpf/bpf_tracing.h>
-#include "socket-filter.h"
 
 char LICENSE[] SEC("license") = "GPL";
 

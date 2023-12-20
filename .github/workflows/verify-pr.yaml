@@ -7,7 +7,8 @@ concurrency:
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   verify:
@@ -22,8 +23,8 @@ jobs:
 
     - name: Compile App
       run: |
-        make -C src
+        make
 
     - name: Run App
       run: |
-        sudo timeout --preserve-status 5s ./src/socket-filter
+        sudo timeout --preserve-status 5s ./socket-filter
