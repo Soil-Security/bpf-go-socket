@@ -43,7 +43,7 @@ func run(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
-	bpfObjectFile := path.Join(filepath.Dir(executable), "socket-filter.bpf.o")
+	bpfObjectFile := path.Join(filepath.Dir(executable), "socket.bpf.o")
 
 	spec, err := ebpf.LoadCollectionSpec(bpfObjectFile)
 	if err != nil {

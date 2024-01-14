@@ -1,4 +1,4 @@
-module github.com/danielpacak/bpf-go-socket-filter
+module danielpacak/bpf-go-socket
 
 go 1.21
 

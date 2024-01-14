@@ -1,7 +1,7 @@
-# bpf-go-socket-filter
+# bpf-go-socket
 
-The `socket-filter` program demonstrates how to load an eBPF program from an ELF file,
-and attach it to a raw socket.
+The `socket-filter` program demonstrates how to load an eBPF program from an
+ELF file, and attach it to a raw socket.
 
 `BPF_PROG_TYPE_SOCKET_FILTER` was the first program type to be added to the
 Linux kernel. When you attach a BPF program to a raw socket, you get access to
@@ -17,12 +17,12 @@ packet.
 Clone and change current directory to the cloned repository:
 
 ```
-git clone --recurse-submodules https://github.com/danielpacak/bpf-go-socket-filter.git
+git clone --recurse-submodules https://github.com/danielpacak/bpf-go-socket.git
 ```
 or
 ```
-git clone https://github.com/danielpacak/bpf-go-socket-filter.git
-cd bpf-go-socket-filter
+git clone https://github.com/danielpacak/bpf-go-socket.git
+cd bpf-go-socket
 git submodule update --init --recursive
 ```
 
@@ -35,7 +35,7 @@ make
 Run the application as root with `sudo`:
 
 ``` console
-$ sudo ./socket-filter --index=0
+$ sudo ./socket --index=0
 Filtering as uid=0(root) on eth index: 0
         ICMP: 20 TCP: 121 UDP: 12_
 ```
@@ -43,10 +43,10 @@ Filtering as uid=0(root) on eth index: 0
 Run the application as non-root user:
 
 ```
-sudo setcap 'cap_net_raw=ep cap_bpf=ep' ./socket-filter
+sudo setcap 'cap_net_raw=ep cap_bpf=ep' ./socket
 ```
 ``` console
-$ ./socket-filter
+$ ./socket
 Filtering as uid=1000(dpacak) on eth index: 0
 	ICMP: 0 TCP: 6167 UDP: 0_
 ```

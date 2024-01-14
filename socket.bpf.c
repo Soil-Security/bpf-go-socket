@@ -1,6 +1,6 @@
 //+build ignore
 
-#include "socket-filter.h"
+#include "socket.h"
 #include "vmlinux.h"
 #include <bpf/bpf_core_read.h>
 #include <bpf/bpf_helpers.h>
@@ -8,8 +8,7 @@
 
 char LICENSE[] SEC("license") = "GPL";
 
-#define ETH_HLEN                                                               \
-  14 /* Total octets in header (copied from linux/if_ether.h).	 */
+#define ETH_HLEN 14 // Total octets in header (copied from linux/if_ether.h).
 
 struct {
   __uint(type, BPF_MAP_TYPE_ARRAY);
