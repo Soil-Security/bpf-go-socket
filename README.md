@@ -17,11 +17,11 @@ packet.
 Clone and change current directory to the cloned repository:
 
 ```
-git clone --recurse-submodules https://github.com/danielpacak/bpf-go-socket.git
+git clone --recurse-submodules https://github.com/Soil-Security/bpf-go-socket.git
 ```
 or
 ```
-git clone https://github.com/danielpacak/bpf-go-socket.git
+git clone https://github.com/Soil-Security/bpf-go-socket.git
 cd bpf-go-socket
 git submodule update --init --recursive
 ```
